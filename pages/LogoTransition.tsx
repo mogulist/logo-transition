@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import classNames from "classnames";
 
 const logos = ["/logos/ktown4u.png", "/vercel.svg"];
 
-const LogoTransition = () => {
+const effectConfig = {
+  rotate: ["rotate-0", "rotate-90"],
+  "translate-x": ["translate-x-0", "-translate-x-4"],
+  scale: ["scale-100", "scale-0"],
+  opacity: ["", ""],
+};
+
+type Effect = keyof typeof effectConfig;
+
+type Props = {
+  effect: Effect;
+};
+const LogoTransition = ({ effect }: Props) => {
   const [currentLogo, setCurrentLogo] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentLogo((prevLogo) => (prevLogo + 1) % logos.length);
-    }, 2000); // Change logo every 5 seconds
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const selectedEffects = effectConfig[effect];
 
   return (
     <div
@@ -25,10 +40,11 @@ const LogoTransition = () => {
           alt={`Logo ${index + 1}`}
           width={105}
           height={20}
-          className={
-            "absolute transition-opacity duration-500 ease-in-out " +
-            (currentLogo === index ? "opacity-100" : "opacity-0")
-          }
+          className={classNames(
+            "absolute transition-all duration-500 ease-in-out ",
+            currentLogo === index ? "opacity-100" : "opacity-0",
+            currentLogo === index ? selectedEffects[0] : selectedEffects[1]
+          )}
         />
       ))}
     </div>

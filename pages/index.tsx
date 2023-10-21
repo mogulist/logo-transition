@@ -46,8 +46,11 @@ export default function Home() {
             />
           </a>
         </div>
-        <div>
-          <LogoTransition />
+        <div className="flex flex-col space-y-8 mb-8">
+          <LogoTransition effect="opacity" />
+          <LogoTransition effect="translate-x" />
+          <LogoTransition effect="scale" />
+          <LogoTransition effect="rotate" />
         </div>
       </div>
 
