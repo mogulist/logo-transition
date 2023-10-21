@@ -6,6 +6,9 @@ const logos = ["/logos/ktown4u.png", "/vercel.svg"];
 
 const effectConfig = {
   rotate: ["rotate-0", "rotate-90"],
+  "rotate-x-bottom": ["rotate-x-0 origin-bottom", "rotate-x-90 origin-bottom"],
+  "rotate-x": ["rotate-x-0", "rotate-x-90"],
+  "rotate-y": ["rotate-y-0", "rotate-y-90"],
   "translate-x": ["translate-x-0", "-translate-x-4"],
   scale: ["scale-100", "scale-0"],
   opacity: ["", ""],
@@ -41,7 +44,7 @@ const LogoTransition = ({ effect }: Props) => {
           width={105}
           height={20}
           className={classNames(
-            "absolute transition-all duration-500 ease-in-out ",
+            "absolute transition-all duration-1000 ease-in-out ",
             currentLogo === index ? "opacity-100" : "opacity-0",
             currentLogo === index ? selectedEffects[0] : selectedEffects[1]
           )}
