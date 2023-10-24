@@ -32,10 +32,7 @@ const LogoTransition = ({ effect }: Props) => {
   const selectedEffects = effectConfig[effect];
 
   return (
-    <div
-      // className={styles.logoContainer}
-      className="relative w-[105px] h-[20px]"
-    >
+    <div className="relative w-[105px] h-[20px]">
       {logos.map((logo, index) => (
         <Image
           key={logo}
